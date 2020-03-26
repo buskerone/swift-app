@@ -31,6 +31,10 @@ class SWAPostsViewController: UIViewController {
         self.getPosts()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.setupNavBar()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.kShowPostDetailsViewControllerSegue {
             let vc = segue.destination as! SWAPostDetailsViewController
@@ -40,6 +44,10 @@ class SWAPostsViewController: UIViewController {
 }
 
 extension SWAPostsViewController {
+    func setupNavBar() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     func setupDataProvider() {
         self.provider = SWAPostsDataProvider(tableView: self.tableView)
         self.provider?.delegate = self

@@ -18,12 +18,17 @@ class SWAPostDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupNavBar()
         self.setupProgressHud()
         self.setupWebView()
     }
 }
 
 extension SWAPostDetailsViewController {
+    func setupNavBar() {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     func setupProgressHud() {
         self.hud.textLabel.text = "Loading"
     }
