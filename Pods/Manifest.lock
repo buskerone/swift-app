@@ -1,0 +1,20 @@
+PODS:
+  - JGProgressHUD (2.1)
+  - SwiftLint (0.39.1)
+
+DEPENDENCIES:
+  - JGProgressHUD (= 2.1)
+  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - JGProgressHUD
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
+  SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
+
+PODFILE CHECKSUM: 8b148dcf9aece5d76c903e768f4a95f8d1c7afff
+
+COCOAPODS: 1.5.3
