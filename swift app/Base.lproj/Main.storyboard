@@ -19,13 +19,43 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="o2k-Qw-QhQ">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SWAPostTableViewCellIdentifier" rowHeight="110" id="o2k-Qw-QhQ" customClass="SWAPostTableViewCell" customModule="swift_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o2k-Qw-QhQ" id="nms-lL-R9n">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Story title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNr-US-1R0">
+                                                    <rect key="frame" x="20" y="11" width="374" height="67"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="story details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWR-fq-QJP">
+                                                    <rect key="frame" x="20" y="85.5" width="374" height="13.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="13.5" id="p6a-6j-dLs"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rNr-US-1R0" firstAttribute="trailing" secondItem="nms-lL-R9n" secondAttribute="trailingMargin" id="2tl-Ff-H8a"/>
+                                                <constraint firstItem="dWR-fq-QJP" firstAttribute="bottom" secondItem="nms-lL-R9n" secondAttribute="bottomMargin" id="DfY-ZR-vx9"/>
+                                                <constraint firstItem="rNr-US-1R0" firstAttribute="top" secondItem="nms-lL-R9n" secondAttribute="topMargin" id="KWy-Wt-QCk"/>
+                                                <constraint firstItem="rNr-US-1R0" firstAttribute="leading" secondItem="nms-lL-R9n" secondAttribute="leadingMargin" id="Obg-9Z-dnC"/>
+                                                <constraint firstItem="dWR-fq-QJP" firstAttribute="leading" secondItem="rNr-US-1R0" secondAttribute="leading" id="ewU-hi-V0u"/>
+                                                <constraint firstItem="dWR-fq-QJP" firstAttribute="trailing" secondItem="rNr-US-1R0" secondAttribute="trailing" id="h4H-WT-dEz"/>
+                                                <constraint firstItem="dWR-fq-QJP" firstAttribute="top" secondItem="rNr-US-1R0" secondAttribute="bottom" constant="7.5" id="zgx-5B-wWB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="postDetailsLabel" destination="dWR-fq-QJP" id="w5c-hu-QYf"/>
+                                            <outlet property="postTitleLabel" destination="rNr-US-1R0" id="KEq-ve-Zh1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -45,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="138"/>
+            <point key="canvasLocation" x="131.8840579710145" y="137.94642857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ugh-8Z-qtN">

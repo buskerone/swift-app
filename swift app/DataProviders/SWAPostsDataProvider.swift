@@ -1,5 +1,5 @@
 //
-//  SDAPostsDataProvider.swift
+//  SWAPostsDataProvider.swift
 //  swift app
 //
 //  Created by Carlos Knopel on 3/26/20.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-private let reuseIdentifier = "SWAPostsTableViewCellIdentifier"
+private let reuseIdentifier = "SWAPostTableViewCellIdentifier"
 
 class SWAPostsDataProvider: NSObject {
     
     var tableView: UITableView
+    var postsItems: [SWAPost] = []
     
     required init(tableView: UITableView) {
         self.tableView = tableView
@@ -33,11 +34,19 @@ extension SWAPostsDataProvider: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return postsItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let postItem = postsItems[indexPath.row]
+        
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? SWAPostTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.configureCell(postItem)
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
