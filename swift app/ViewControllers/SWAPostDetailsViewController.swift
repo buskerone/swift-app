@@ -29,11 +29,20 @@ extension SWAPostDetailsViewController {
     }
     
     func setupWebView() {
-        if let postUrl = self.post?.postUrl {
-            let url = URL(string: postUrl)!
-            self.webView.load(URLRequest(url: url))
-            self.webView.allowsBackForwardNavigationGestures = true
-            self.webView.navigationDelegate = self
+        if let post = self.post {
+            if let postUrl = post.postUrl {
+                if postUrl == "" {
+                    let alertController = UIAlertController(title: "Error", message:
+                        "The selected story doesn't have a valid URL. Please select another one.", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let url = URL(string: postUrl)!
+                    self.webView.load(URLRequest(url: url))
+                    self.webView.allowsBackForwardNavigationGestures = true
+                    self.webView.navigationDelegate = self
+                }
+            }
         }
     }
 }
@@ -45,5 +54,13 @@ extension SWAPostDetailsViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         self.hud.show(in: self.view)
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        self.hud.dismiss()
+        let alertController = UIAlertController(title: "Error", message:
+            "There is an error while trying to load the url. Please try again or select another story.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alertController, animated: true, completion: nil)
     }
 }

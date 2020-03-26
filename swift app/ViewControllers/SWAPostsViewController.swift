@@ -75,6 +75,7 @@ extension SWAPostsViewController {
             if let data = data {
                 self.posts = self.parseJsonData(data: data)
                 OperationQueue.main.addOperation({
+                    self.posts = self.posts.sorted(by: { $0.postDate?.compare($1.postDate!) == .orderedAscending })
                     self.provider?.postsItems = self.posts
                     self.tableView.reloadData()
                 })
