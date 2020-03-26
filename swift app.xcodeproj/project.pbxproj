@@ -15,6 +15,8 @@
 		97D0D695242D028E009F94C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97D0D694242D028E009F94C4 /* Assets.xcassets */; };
 		97D0D698242D028E009F94C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97D0D696242D028E009F94C4 /* LaunchScreen.storyboard */; };
 		97D0D6A3242D028E009F94C4 /* swift_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0D6A2242D028E009F94C4 /* swift_appUITests.swift */; };
+		97D0D6B3242D04BE009F94C4 /* SWAPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0D6B2242D04BE009F94C4 /* SWAPostsViewController.swift */; };
+		97D0D6B5242D0558009F94C4 /* SWAPostsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0D6B4242D0558009F94C4 /* SWAPostsDataProvider.swift */; };
 		CBF30A66FDAEFFF091E67E87 /* Pods_swift_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9246C48E605895CCE9714A /* Pods_swift_app.framework */; };
 		FFD20BC28AF6886AAB5E6B3C /* Pods_swift_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC396EC94FFC822B9A1AFF8E /* Pods_swift_appUITests.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +47,8 @@
 		97D0D69E242D028E009F94C4 /* swift appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swift appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D0D6A2242D028E009F94C4 /* swift_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_appUITests.swift; sourceTree = "<group>"; };
 		97D0D6A4242D028E009F94C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97D0D6B2242D04BE009F94C4 /* SWAPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPostsViewController.swift; sourceTree = "<group>"; };
+		97D0D6B4242D0558009F94C4 /* SWAPostsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPostsDataProvider.swift; sourceTree = "<group>"; };
 		AC396EC94FFC822B9A1AFF8E /* Pods_swift_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18096F4E7FE646E1A716B8C /* Pods-swift appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift appUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-swift appUITests/Pods-swift appUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E4823E7A64671F320EA92996 /* Pods-swift appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift appUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swift appUITests/Pods-swift appUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +117,11 @@
 		97D0D687242D028C009F94C4 /* swift app */ = {
 			isa = PBXGroup;
 			children = (
+				97D0D6B1242D0441009F94C4 /* ViewControllers */,
+				97D0D6B0242D043A009F94C4 /* Cells */,
+				97D0D6AF242D0433009F94C4 /* DataProviders */,
+				97D0D6AE242D042C009F94C4 /* Protocols */,
+				97D0D6AD242D0423009F94C4 /* Models */,
 				97D0D688242D028C009F94C4 /* AppDelegate.swift */,
 				97D0D68A242D028C009F94C4 /* SceneDelegate.swift */,
 				97D0D68C242D028C009F94C4 /* ViewController.swift */,
@@ -132,6 +141,43 @@
 				97D0D6A4242D028E009F94C4 /* Info.plist */,
 			);
 			path = "swift appUITests";
+			sourceTree = "<group>";
+		};
+		97D0D6AD242D0423009F94C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		97D0D6AE242D042C009F94C4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		97D0D6AF242D0433009F94C4 /* DataProviders */ = {
+			isa = PBXGroup;
+			children = (
+				97D0D6B4242D0558009F94C4 /* SWAPostsDataProvider.swift */,
+			);
+			path = DataProviders;
+			sourceTree = "<group>";
+		};
+		97D0D6B0242D043A009F94C4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		97D0D6B1242D0441009F94C4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				97D0D6B2242D04BE009F94C4 /* SWAPostsViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +343,8 @@
 			files = (
 				97D0D68D242D028C009F94C4 /* ViewController.swift in Sources */,
 				97D0D689242D028C009F94C4 /* AppDelegate.swift in Sources */,
+				97D0D6B3242D04BE009F94C4 /* SWAPostsViewController.swift in Sources */,
+				97D0D6B5242D0558009F94C4 /* SWAPostsDataProvider.swift in Sources */,
 				97D0D68B242D028C009F94C4 /* SceneDelegate.swift in Sources */,
 				97D0D693242D028C009F94C4 /* swift_app.xcdatamodeld in Sources */,
 			);
