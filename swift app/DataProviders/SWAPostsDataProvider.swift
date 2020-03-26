@@ -14,6 +14,7 @@ class SWAPostsDataProvider: NSObject {
     
     var tableView: UITableView
     var postsItems: [SWAPost] = []
+    weak var delegate:SWAPostDetailsProtocol?
     
     required init(tableView: UITableView) {
         self.tableView = tableView
@@ -63,5 +64,6 @@ extension SWAPostsDataProvider: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
+        self.delegate?.showPostDetails(postsItems[indexPath.row])
     }
 }

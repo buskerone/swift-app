@@ -9,23 +9,38 @@
 import UIKit
 import JGProgressHUD
 
+protocol SWAPostDetailsProtocol: class {
+    func showPostDetails(_ post:SWAPost)
+}
+
 class SWAPostsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    var kShowPostDetailsViewControllerSegue = "SWASegueShowPostDetailsViewController"
+    var posts = [SWAPost]()
+    var post: SWAPost?
+    
     // MARK: Data provider
     var provider: SWAPostsDataProvider?
-    var posts = [SWAPost]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupDataProvider()
         self.getPosts()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == self.kShowPostDetailsViewControllerSegue {
+            let vc = segue.destination as! SWAPostDetailsViewController
+            vc.post = self.post
+        }
+    }
 }
 
 extension SWAPostsViewController {
     func setupDataProvider() {
         self.provider = SWAPostsDataProvider(tableView: self.tableView)
+        self.provider?.delegate = self
     }
     
     func getPosts() {
@@ -34,7 +49,7 @@ extension SWAPostsViewController {
         }
         
         let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Cargando"
+        hud.textLabel.text = "Loading"
         hud.show(in: self.view)
         
         let request = URLRequest(url: postsURL)
@@ -73,19 +88,15 @@ extension SWAPostsViewController {
             
             for jsonPost in jsonPosts {
                 var post = SWAPost()
-                if let createdAt = jsonPost["created_at"] {
+                if let createdAt = jsonPost["created_at"], let author = jsonPost["author"], let url = jsonPost["story_url"] {
                     post.postDate = createdAt as? String ?? ""
-                }
-                if let author = jsonPost["author"] {
                     post.postAuthor = author as? String ?? ""
+                    post.postUrl = url as? String ?? ""
                 }
                 if let storyTitle = jsonPost["story_title"] {
                     post.postTitle = storyTitle as? String ?? "No title available"
                 } else if let title = jsonPost["title"] {
                     post.postTitle = title as? String ?? "No title available"
-                }
-                if let url = jsonPost["story_url"] {
-                    post.postUrl = url as? String ?? ""
                 }
                 posts.append(post)
             }
@@ -93,5 +104,12 @@ extension SWAPostsViewController {
             print(error)
         }
         return posts
+    }
+}
+
+extension SWAPostsViewController: SWAPostDetailsProtocol {
+    func showPostDetails(_ post:SWAPost) {
+        self.post = post
+        self.performSegue(withIdentifier: self.kShowPostDetailsViewControllerSegue, sender: nil)
     }
 }
