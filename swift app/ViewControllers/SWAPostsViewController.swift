@@ -17,6 +17,7 @@ class SWAPostsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var kShowPostDetailsViewControllerSegue = "SWASegueShowPostDetailsViewController"
+    var refreshControl: UIRefreshControl!
     var posts = [SWAPost]()
     var post: SWAPost?
     
@@ -26,6 +27,7 @@ class SWAPostsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupDataProvider()
+        self.setupRefreshControl()
         self.getPosts()
     }
     
@@ -41,6 +43,12 @@ extension SWAPostsViewController {
     func setupDataProvider() {
         self.provider = SWAPostsDataProvider(tableView: self.tableView)
         self.provider?.delegate = self
+    }
+    
+    func setupRefreshControl() {
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.tableView.refreshControl = self.refreshControl
     }
     
     func getPosts() {
@@ -104,6 +112,13 @@ extension SWAPostsViewController {
             print(error)
         }
         return posts
+    }
+    
+    //MARK: Pull to refresh
+    @objc func refresh(sender:UIRefreshControl)
+    {
+        getPosts()
+        sender.endRefreshing()
     }
 }
 
