@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  swift app
+//  SwiftApp
 //
-//  Created by Carlos Knopel on 3/26/20.
+//  Created by Carlos Knopel on 3/24/20.
 //  Copyright © 2020 Carlos Knopel. All rights reserved.
 //
 
@@ -48,7 +48,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
 

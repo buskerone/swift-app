@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct SWAPost: Codable {
+struct SWAPost {
     var postTitle: String?
     var postDate: String?
     var postAuthor: String?

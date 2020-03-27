@@ -17,6 +17,7 @@ class SWAPostsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var kShowPostDetailsViewControllerSegue = "SWASegueShowPostDetailsViewController"
+    let networking = SWANetworkingService.shared
     var refreshControl: UIRefreshControl!
     var posts = [SWAPost]()
     var post: SWAPost?
@@ -44,6 +45,7 @@ class SWAPostsViewController: UIViewController {
 }
 
 extension SWAPostsViewController {
+    
     func setupNavBar() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -60,40 +62,42 @@ extension SWAPostsViewController {
     }
     
     func getPosts() {
-        guard let postsURL = URL(string: "http://hn.algolia.com/api/v1/search_by_date?query=ios") else {
-            return
-        }
         
+        let urlPath = "http://hn.algolia.com/api/v1/search_by_date?query=ios"
         let hud = JGProgressHUD(style: .dark)
+        
         hud.textLabel.text = "Loading"
         hud.show(in: self.view)
         
-        let request = URLRequest(url: postsURL)
-        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+        networking.request(urlPath) { (result) in
             
             OperationQueue.main.addOperation({
                 hud.dismiss()
             })
             
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            if let data = data {
+            switch result {
+            case .success(let data):
+                
                 self.posts = self.parseJsonData(data: data)
+                self.posts = self.posts.sorted(by: { $0.postDate?.compare($1.postDate!) == .orderedAscending })
+                self.provider?.postsItems = self.posts
+
                 OperationQueue.main.addOperation({
-                    self.posts = self.posts.sorted(by: { $0.postDate?.compare($1.postDate!) == .orderedAscending })
-                    self.provider?.postsItems = self.posts
                     self.tableView.reloadData()
                 })
+                
+            case .failure(let error): print(error)
+            
+                let alertController = UIAlertController(title: "Error", message:
+                    "An error occurred when trying to fetch Hacker News posts. Please try again later.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                self.present(alertController, animated: true, completion: nil)
             }
-        })
-        
-        task.resume()
+        }
     }
     
     func parseJsonData(data: Data) -> [SWAPost] {
+        
         var posts = [SWAPost]()
         
         do {

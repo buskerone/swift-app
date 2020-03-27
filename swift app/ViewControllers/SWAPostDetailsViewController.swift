@@ -38,7 +38,7 @@ extension SWAPostDetailsViewController {
             if let postUrl = post.postUrl {
                 if postUrl == "" {
                     let alertController = UIAlertController(title: "Error", message:
-                        "The selected story doesn't have a valid URL. Please select another one.", preferredStyle: .alert)
+                        "The selected story doesn't have a valid URL. Please select another post.", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "Ok", style: .default))
                     self.present(alertController, animated: true, completion: nil)
                 } else {
@@ -64,7 +64,7 @@ extension SWAPostDetailsViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         self.hud.dismiss()
         let alertController = UIAlertController(title: "Error", message:
-            "There is an error while trying to load the url. Please try again or select another story.", preferredStyle: .alert)
+            "An error occurred when trying to load the url. Please try again or select another post.", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
