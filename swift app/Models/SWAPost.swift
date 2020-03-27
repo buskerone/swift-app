@@ -6,11 +6,12 @@
 //  Copyright © 2020 Carlos Knopel. All rights reserved.
 //
 
-import UIKit
+import RealmSwift
 
-struct SWAPost {
-    var postTitle: String?
-    var postDate: String?
-    var postAuthor: String?
-    var postUrl: String?
+class SWAPost: Object {
+    @objc dynamic var postId: String?
+    @objc dynamic var postTitle: String?
+    @objc dynamic var postDate: String?
+    @objc dynamic var postAuthor: String?
+    @objc dynamic var postUrl: String?
 }

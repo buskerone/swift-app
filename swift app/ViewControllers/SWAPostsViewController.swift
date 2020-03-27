@@ -8,6 +8,7 @@
 
 import UIKit
 import JGProgressHUD
+import RealmSwift
 
 protocol SWAPostDetailsProtocol: class {
     func showPostDetails(_ post:SWAPost)
@@ -16,8 +17,9 @@ protocol SWAPostDetailsProtocol: class {
 class SWAPostsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    var kShowPostDetailsViewControllerSegue = "SWASegueShowPostDetailsViewController"
+    let kShowPostDetailsViewControllerSegue = "SWASegueShowPostDetailsViewController"
     let networking = SWANetworkingService.shared
+    let realm = try! Realm()
     var refreshControl: UIRefreshControl!
     var posts = [SWAPost]()
     var post: SWAPost?
@@ -86,8 +88,9 @@ extension SWAPostsViewController {
                     self.tableView.reloadData()
                 })
                 
-            case .failure(let error): print(error)
-            
+            case .failure(let error):
+                
+                print(error)
                 let alertController = UIAlertController(title: "Error", message:
                     "An error occurred when trying to fetch Hacker News posts. Please try again later.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Ok", style: .default))
@@ -108,18 +111,31 @@ extension SWAPostsViewController {
             }
             
             for jsonPost in jsonPosts {
-                var post = SWAPost()
+                let post = SWAPost()
                 if let createdAt = jsonPost["created_at"], let author = jsonPost["author"], let url = jsonPost["story_url"] {
                     post.postDate = createdAt as? String ?? ""
                     post.postAuthor = author as? String ?? ""
                     post.postUrl = url as? String ?? ""
+                    post.postId = "\(String(describing: author)) - \(String(describing: createdAt))"
                 }
                 if let storyTitle = jsonPost["story_title"] {
                     post.postTitle = storyTitle as? String ?? "No title available"
                 } else if let title = jsonPost["title"] {
                     post.postTitle = title as? String ?? "No title available"
                 }
+                
                 posts.append(post)
+                
+//                OperationQueue.main.addOperation({
+//                    do {
+//                        try self.realm.write {
+//                            self.realm.add(post)
+//                        }
+//                    } catch {
+//                        print("Error saving post \(error)")
+//                    }
+//                })
+                
             }
         } catch {
             print(error)
@@ -136,6 +152,7 @@ extension SWAPostsViewController {
 }
 
 extension SWAPostsViewController: SWAPostDetailsProtocol {
+    
     func showPostDetails(_ post:SWAPost) {
         self.post = post
         self.performSegue(withIdentifier: self.kShowPostDetailsViewControllerSegue, sender: nil)

@@ -8,6 +8,7 @@ target 'swift app' do
   # Pods for swift app
   pod 'JGProgressHUD', '2.1'
   pod 'SwiftLint'
+  pod 'RealmSwift'
 
   target 'swift appUITests' do
     inherit! :search_paths
