@@ -1,7 +1,7 @@
 # swift-app
 
 ## Description
-iOS App made with Swift that gets posts from Hacker News.
+iOS App made with Swift that shows you posts from Hacker News.
 
 ## Tasks
 - Get posts from url
