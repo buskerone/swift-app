@@ -13,7 +13,6 @@
 		97D0D698242D028E009F94C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97D0D696242D028E009F94C4 /* LaunchScreen.storyboard */; };
 		97D0D6A3242D028E009F94C4 /* swift_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0D6A2242D028E009F94C4 /* swift_appUITests.swift */; };
 		97D0D6B3242D04BE009F94C4 /* SWAPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0D6B2242D04BE009F94C4 /* SWAPostsViewController.swift */; };
-		97D0D6B5242D0558009F94C4 /* SWAPostsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0D6B4242D0558009F94C4 /* SWAPostsDataProvider.swift */; };
 		97D0D6B7242D1652009F94C4 /* SWAPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0D6B6242D1652009F94C4 /* SWAPost.swift */; };
 		97D0D6B9242D1BFD009F94C4 /* SWAPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0D6B8242D1BFD009F94C4 /* SWAPostTableViewCell.swift */; };
 		97D0D6BB242D1FA8009F94C4 /* SWATableViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D0D6BA242D1FA8009F94C4 /* SWATableViewCellProtocol.swift */; };
@@ -38,6 +37,7 @@
 		1A9246C48E605895CCE9714A /* Pods_swift_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CEAC55D7ECBFC378635E425 /* Pods-swift app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swift app/Pods-swift app.debug.xcconfig"; sourceTree = "<group>"; };
 		8094F39765CFC4928227385C /* Pods-swift app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift app.release.xcconfig"; path = "Pods/Target Support Files/Pods-swift app/Pods-swift app.release.xcconfig"; sourceTree = "<group>"; };
+		972491D724311BA300C8AB4B /* swift app-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift app-Bridging-Header.h"; sourceTree = "<group>"; };
 		97D0D685242D028C009F94C4 /* swift app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D0D688242D028C009F94C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97D0D68F242D028C009F94C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,7 +48,6 @@
 		97D0D6A2242D028E009F94C4 /* swift_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_appUITests.swift; sourceTree = "<group>"; };
 		97D0D6A4242D028E009F94C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97D0D6B2242D04BE009F94C4 /* SWAPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPostsViewController.swift; sourceTree = "<group>"; };
-		97D0D6B4242D0558009F94C4 /* SWAPostsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPostsDataProvider.swift; sourceTree = "<group>"; };
 		97D0D6B6242D1652009F94C4 /* SWAPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPost.swift; sourceTree = "<group>"; };
 		97D0D6B8242D1BFD009F94C4 /* SWAPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPostTableViewCell.swift; sourceTree = "<group>"; };
 		97D0D6BA242D1FA8009F94C4 /* SWATableViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWATableViewCellProtocol.swift; sourceTree = "<group>"; };
@@ -126,7 +125,6 @@
 				97DA4093242E709800C3524F /* Services */,
 				97D0D6B1242D0441009F94C4 /* ViewControllers */,
 				97D0D6B0242D043A009F94C4 /* Cells */,
-				97D0D6AF242D0433009F94C4 /* DataProviders */,
 				97D0D6AE242D042C009F94C4 /* Protocols */,
 				97D0D6AD242D0423009F94C4 /* Models */,
 				97D0D688242D028C009F94C4 /* AppDelegate.swift */,
@@ -135,6 +133,7 @@
 				97D0D694242D028E009F94C4 /* Assets.xcassets */,
 				97D0D696242D028E009F94C4 /* LaunchScreen.storyboard */,
 				97D0D699242D028E009F94C4 /* Info.plist */,
+				972491D724311BA300C8AB4B /* swift app-Bridging-Header.h */,
 			);
 			path = "swift app";
 			sourceTree = "<group>";
@@ -162,14 +161,6 @@
 				97D0D6BA242D1FA8009F94C4 /* SWATableViewCellProtocol.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		97D0D6AF242D0433009F94C4 /* DataProviders */ = {
-			isa = PBXGroup;
-			children = (
-				97D0D6B4242D0558009F94C4 /* SWAPostsDataProvider.swift */,
-			);
-			path = DataProviders;
 			sourceTree = "<group>";
 		};
 		97D0D6B0242D043A009F94C4 /* Cells */ = {
@@ -322,15 +313,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-swift app/Pods-swift app-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -366,7 +361,6 @@
 				97D0D6B9242D1BFD009F94C4 /* SWAPostTableViewCell.swift in Sources */,
 				97D0D689242D028C009F94C4 /* AppDelegate.swift in Sources */,
 				97D0D6B3242D04BE009F94C4 /* SWAPostsViewController.swift in Sources */,
-				97D0D6B5242D0558009F94C4 /* SWAPostsDataProvider.swift in Sources */,
 				97DA409B242E962000C3524F /* SceneDelegate.swift in Sources */,
 				97D0D6BD242D2A6A009F94C4 /* SWAPostDetailsViewController.swift in Sources */,
 				97D0D6BB242D1FA8009F94C4 /* SWATableViewCellProtocol.swift in Sources */,

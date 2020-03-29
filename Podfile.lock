@@ -1,30 +1,38 @@
 PODS:
+  - DZNEmptyDataSet (1.8.1)
   - JGProgressHUD (2.1)
   - Realm (4.3.2):
     - Realm/Headers (= 4.3.2)
   - Realm/Headers (4.3.2)
   - RealmSwift (4.3.2):
     - Realm (= 4.3.2)
+  - SwiftDate (5.1.0)
   - SwiftLint (0.39.1)
 
 DEPENDENCIES:
+  - DZNEmptyDataSet
   - JGProgressHUD (= 2.1)
   - RealmSwift
+  - SwiftDate (~> 5.0)
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - DZNEmptyDataSet
     - JGProgressHUD
     - Realm
     - RealmSwift
+    - SwiftDate
     - SwiftLint
 
 SPEC CHECKSUMS:
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
   RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
+  SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
   SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
 
-PODFILE CHECKSUM: 857fa41f098e4da933395ed54f53b00c3b58d87d
+PODFILE CHECKSUM: 0caa08aa7b551dc97c79b82fd6cff3441ef7dec8
 
 COCOAPODS: 1.5.3

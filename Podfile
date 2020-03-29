@@ -9,6 +9,8 @@ target 'swift app' do
   pod 'JGProgressHUD', '2.1'
   pod 'SwiftLint'
   pod 'RealmSwift'
+  pod 'DZNEmptyDataSet'
+  pod 'SwiftDate', '~> 5.0'
 
   target 'swift appUITests' do
     inherit! :search_paths
